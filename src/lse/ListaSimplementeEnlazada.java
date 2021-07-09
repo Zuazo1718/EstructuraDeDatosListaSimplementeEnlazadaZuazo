@@ -15,6 +15,7 @@ public class ListaSimplementeEnlazada {
         return primero == null;
     }
 
+
     public void insertar (Object dato){
         if (estarVacia()){
             Nodo nuevo = new Nodo(dato, null);
@@ -22,6 +23,25 @@ public class ListaSimplementeEnlazada {
         }else {
             Nodo nuevo = new Nodo(dato, primero);
             primero = nuevo;
+
+        }
+    }
+
+    public void insertarV2(Object dato){
+
+        if (estarVacia()){
+            Nodo nuevo = new Nodo(dato);
+            primero = nuevo;
+            ultimo = nuevo;
+        }else {
+            Nodo nuevo  = new Nodo(dato);
+            Nodo aux;
+            aux = primero;
+            while(aux.siguiente != null){
+                aux = aux.siguiente;
+            }
+            aux.siguiente = nuevo;
+            ultimo = nuevo;
         }
     }
 
@@ -62,16 +82,23 @@ public class ListaSimplementeEnlazada {
         Scanner teclado = new Scanner(System.in);
         System.out.print("Introducir el nuevo numero para agregar a la lista que no sea de 1 a 15 : ");
         int datos = teclado.nextInt();
-        if (datos <= 15){
-            System.out.print("El numero ya existe en la lista ...");
-            datos = teclado.nextInt();
-        }else {
-
+        boolean prueba=false;
+        while(prueba ==false){
+            if(datos<=15){
+                System.out.print("Introducir el nuevo numero para agregar a la lista que no sea de 1 a 15 : ");
+                datos = teclado.nextInt();
+                prueba=false;
+            }else{
+                insertarV2(datos);
+                prueba = true;
+                mostrar();
+            }
         }
-        mostrar();
 
     }
-    
+
 
 
 }
+
+

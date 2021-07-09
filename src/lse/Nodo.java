@@ -8,6 +8,10 @@ public class Nodo {
         this.setDato(dato);
         this.setSiguiente(siguiente);
     }
+    public Nodo(Object dato) {
+        this.dato = dato;
+        this.siguiente = null;
+    }
 
     public Nodo() {
 
